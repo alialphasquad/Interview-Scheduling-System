@@ -1,5 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { InterviewsService } from './interviews.service';
+import { PrismaService } from 'src/prisma/prisma.service';
 
 let interviewData = {
   id: 1,
@@ -26,6 +27,7 @@ describe('InterviewsService', () => {
             findOne: jest.fn().mockImplementation(() => Promise.resolve(interviewData)),
           },
         },
+        { provide: PrismaService, useValue: {} },
       ],
     }).compile();
 

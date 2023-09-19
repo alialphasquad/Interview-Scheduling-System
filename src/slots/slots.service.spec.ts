@@ -1,5 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { SlotsService } from './slots.service';
+import { PrismaService } from 'src/prisma/prisma.service';
 
 let slotData = {
   id: 1,
@@ -27,6 +28,7 @@ describe('SlotsService', () => {
             findOne: jest.fn().mockImplementation(() => Promise.resolve(slotData)),
           },
         },
+        { provide: PrismaService, useValue: {} },
       ],
     }).compile();
 

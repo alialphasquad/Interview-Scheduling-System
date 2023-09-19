@@ -1,6 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { UsersController } from './users.controller';
 import { UsersService } from './users.service';
+import { PrismaService } from 'src/prisma/prisma.service';
 
 let userData = {
   id: 1,
@@ -30,6 +31,7 @@ describe('UsersController', () => {
               .mockResolvedValue(() => Promise.resolve(userData)),
           },
         },
+        { provide: PrismaService, useValue: {} },
       ],
     }).compile();
 

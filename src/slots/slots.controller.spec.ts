@@ -1,6 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { SlotsController } from './slots.controller';
 import { SlotsService } from './slots.service';
+import { PrismaService } from 'src/prisma/prisma.service';
 
 let slotData = {
   id: 1,
@@ -29,6 +30,7 @@ describe('SlotsController', () => {
               .mockResolvedValue(() => Promise.resolve(slotData)),
           },
         },
+        { provide: PrismaService, useValue: {} },
       ],
     }).compile();
 
